@@ -132,8 +132,12 @@ WSGI_APPLICATION = 'Backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'tunipharma_db',
+         'USER':'postgres',
+         'PASSWORD':'brigaderouge01',
+         'HOST':'localhost',
+         'PORT':5432,
     }
 }
 
