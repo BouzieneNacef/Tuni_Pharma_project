@@ -1,11 +1,19 @@
-from django.urls import path, include
+from django.urls import path, include, re_path
 from . import views
 from.views import MyTokenObtainPairView
 from rest_framework import routers
 from .viewSets import *
 
-router = routers.DefaultRouter()   #get the default router object defined in rest_framework
-router.register(r'product_viewSet', ProductViewSet) 
+# get instance of the router defined in rest_framework
+router = routers.DefaultRouter()
+# add Product and client urls( get, post, put, delete) 
+router.register(r'product', ProductViewSet, basename='product') 
+router.register(r'client', ClientViewSet, basename='clent')
+router.register(r'command',CommandViewSet,basename='command')
+router.register(r'details',CommandDetailsViewSet,basename='command_details')
+router.register(r'category',CategoryViewSet,basename='product_category')
+router.register(r'pannier',PannierViewSet,basename='pannier')
+router.register(r'delivery',DeliveryInformationViewSet,basename='delivery')
 
  
 from rest_framework_simplejwt.views import (
