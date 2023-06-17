@@ -25,7 +25,7 @@ urlpatterns = [
     # base App
     path('base/', include('base.urls')),
     # authentification app
-    #path('accounts/', include('authentification.urls')),
+    path('accounts/', include('authentification.urls')),
     
     
 ]

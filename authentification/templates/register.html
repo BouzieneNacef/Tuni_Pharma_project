@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Register</h2>
+  {% comment %}
+enctype="multipart/form-data is required for file uploads
+it is used to encode the form data as a multipart/form-data request
+  {% endcomment %}
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Register</button>
+  </form>
+{% endblock %}

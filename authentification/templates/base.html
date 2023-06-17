@@ -1,0 +1,36 @@
+{% comment %}
+{% load static%} tag is used to load static files like css, js, images etc.
+{% static 'style.css' %} is used to load static files from static folder.
+{% url 'authentification:logout' %} is used to load url from urls.py file.
+{% if user.is_authenticated %} is used to check if user is logged in or not.
+{% else %} is used to check if user is not logged in.
+{% block title %}My Site{% endblock %} is used to set title of the page.
+{% block content %}{% endblock %} is used to set content of the page.
+{{ user.get_full_name }} is used to get full name of the user.
+{% endcomment %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}My Site{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+  </head>
+  <body>
+    <header>
+      <h1>My Site</h1>
+      {% if user.is_authenticated %}
+        <p>Welcome, {{ user.get_full_name }} (<a href="{% url 'authentification:logout' %}">Logout</a>)</p>
+      {% else %}
+      <p><a href="{% url 'authentification:login' %}">Login</a> | <a href="{% url 'authentification:register' %}">Register</a></p>
+      {% endif %}
+    </header>
+    {% comment %} <main> tag is used to set content of the page.
+    {% block content %}{% endblock %} is used to set content of the page.
+    
+         {% endcomment %}
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>
